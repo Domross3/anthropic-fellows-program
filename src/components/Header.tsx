@@ -1,16 +1,63 @@
 export default function Header() {
   return (
-    <header className="border-b border-border bg-surface">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <header
+      style={{
+        position: "relative",
+        zIndex: 10,
+        padding: "28px 32px 0 32px",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1280,
+          margin: "0 auto",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+        }}
+      >
         <div>
-          <h1 className="text-xl font-semibold text-foreground">
-            Dominic Ross
-          </h1>
-          <p className="text-sm text-muted">Reference Materials Portal</p>
+          <div
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 22,
+              fontWeight: 500,
+              letterSpacing: "0.01em",
+              color: "var(--fg-star)",
+              lineHeight: 1,
+            }}
+          >
+            Dom Ross
+          </div>
+          <div
+            style={{
+              marginTop: 4,
+              fontSize: 10,
+              letterSpacing: "0.32em",
+              textTransform: "uppercase",
+              color: "var(--fg-dust)",
+              fontWeight: 400,
+            }}
+          >
+            ✦ EECS · Michigan ✦
+          </div>
         </div>
         <a
           href="mailto:domross@umich.edu"
-          className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-muted transition-colors hover:border-accent hover:text-accent"
+          style={{
+            padding: "9px 20px",
+            borderRadius: 9999,
+            border: "1px solid rgba(196, 181, 253, 0.25)",
+            color: "var(--fg-moon)",
+            fontSize: 11,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            fontFamily: "var(--font-body)",
+            transition: "all 220ms var(--ease-mystic)",
+            background: "rgba(167, 139, 250, 0.04)",
+          }}
         >
           Contact
         </a>

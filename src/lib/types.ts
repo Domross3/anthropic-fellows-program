@@ -8,6 +8,13 @@ export type DocumentCategory =
   | "certification"
   | "other";
 
+export type AuraColor =
+  | "resume"
+  | "transcript"
+  | "project"
+  | "essay"
+  | "certification";
+
 export interface DocumentMeta {
   id: string;
   title: string;
@@ -15,8 +22,12 @@ export interface DocumentMeta {
   description: string;
   filename: string;
   pdfPath?: string;
+  imagePath?: string;
+  aura: AuraColor;
   tags: string[];
   lastUpdated: string;
+  featured?: boolean;
+  detailText?: string;
 }
 
 export interface SearchRequest {

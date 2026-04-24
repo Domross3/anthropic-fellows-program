@@ -16,19 +16,68 @@ export default function SourceCitation({
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="rounded-lg border border-border bg-surface transition-colors hover:border-accent/30">
+    <div
+      style={{
+        borderRadius: 16,
+        background:
+          "linear-gradient(180deg, rgba(36,23,87,0.32) 0%, rgba(10,6,32,0.65) 100%)",
+        border: "1px solid rgba(196, 181, 253, 0.16)",
+        transition: "border-color 220ms var(--ease-mystic)",
+        overflow: "hidden",
+      }}
+    >
       <button
         onClick={() => setExpanded(!expanded)}
-        className="flex w-full items-start justify-between p-4 text-left"
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          textAlign: "left",
+          padding: "16px 20px",
+          background: "transparent",
+          border: 0,
+          cursor: "pointer",
+          fontFamily: "var(--font-body)",
+          color: "var(--fg-star)",
+        }}
       >
-        <div className="flex-1">
-          <p className="text-sm font-medium text-foreground">
+        <div style={{ flex: 1 }}>
+          <p
+            style={{
+              margin: 0,
+              fontSize: 14,
+              fontWeight: 500,
+              color: "var(--fg-star)",
+              letterSpacing: "0.01em",
+            }}
+          >
             {citation.title}
           </p>
-          <p className="mt-0.5 text-xs text-muted">{citation.relevance}</p>
+          <p
+            style={{
+              margin: "4px 0 0 0",
+              fontSize: 12,
+              color: "var(--fg-dust)",
+              fontWeight: 300,
+              lineHeight: 1.5,
+            }}
+          >
+            {citation.relevance}
+          </p>
         </div>
-        <span className="ml-3 mt-0.5 text-xs text-muted">
-          {expanded ? "collapse" : "expand"}
+        <span
+          style={{
+            marginLeft: 14,
+            marginTop: 2,
+            fontSize: 11,
+            color: "var(--aura-bright)",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            opacity: 0.8,
+          }}
+        >
+          {expanded ? "◂ close" : "open ▸"}
         </span>
       </button>
 
@@ -38,11 +87,27 @@ export default function SourceCitation({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: "hidden" }}
           >
-            <div className="border-t border-border px-4 pb-4 pt-3">
-              <blockquote className="border-l-2 border-accent/40 pl-3 text-sm italic text-muted">
+            <div
+              style={{
+                padding: "14px 20px 20px 20px",
+                borderTop: "1px solid rgba(196, 181, 253, 0.1)",
+              }}
+            >
+              <blockquote
+                style={{
+                  margin: 0,
+                  paddingLeft: 14,
+                  borderLeft: "2px solid var(--aura)",
+                  fontFamily: "var(--font-display)",
+                  fontStyle: "italic",
+                  fontSize: 15,
+                  lineHeight: 1.6,
+                  color: "var(--fg-moon)",
+                }}
+              >
                 {citation.excerpt}
               </blockquote>
               {pdfPath && (
@@ -50,10 +115,19 @@ export default function SourceCitation({
                   href={pdfPath}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
+                  style={{
+                    marginTop: 14,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    fontSize: 12,
+                    color: "var(--aura-bright)",
+                    fontWeight: 500,
+                    letterSpacing: "0.04em",
+                    textDecoration: "none",
+                  }}
                 >
-                  View Document (PDF)
-                  <span aria-hidden="true">&rarr;</span>
+                  Open PDF <span aria-hidden>↗</span>
                 </a>
               )}
             </div>

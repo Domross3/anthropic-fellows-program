@@ -1,28 +1,110 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafbfc;
-  --foreground: #1a1a2e;
-  --accent: #2563eb;
-  --accent-light: #dbeafe;
-  --surface: #ffffff;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  /* ---- Void / base ---- */
+  --void: #05030f;
+  --void-2: #0a0620;
+  --void-3: #120a35;
+  --ink-deep: #1a1140;
+  --ink: #241757;
+
+  /* ---- Mist / glass ---- */
+  --mist-1: rgba(167, 139, 250, 0.08);
+  --mist-2: rgba(167, 139, 250, 0.14);
+  --mist-edge: rgba(196, 181, 253, 0.22);
+
+  /* ---- Aura / accent (violet) ---- */
+  --aura: #a78bfa;
+  --aura-bright: #c4b5fd;
+  --aura-deep: #7c5ce8;
+  --aura-soft: rgba(167, 139, 250, 0.30);
+
+  /* ---- Starlight foreground ---- */
+  --fg-star: #f4f1ff;
+  --fg-moon: #c9c0f0;
+  --fg-dust: #7a6fa8;
+
+  /* ---- Category auras ---- */
+  --aura-resume: #8b9dff;
+  --aura-transcript: #6ad4ff;
+  --aura-project: #c99bff;
+  --aura-essay: #ff8bd1;
+  --aura-certification: #7fe5c7;
+
+  /* ---- Glows ---- */
+  --glow-sm: 0 0 20px rgba(167, 139, 250, 0.25);
+  --glow-md: 0 0 40px rgba(167, 139, 250, 0.35);
+  --glow-lg: 0 0 80px rgba(167, 139, 250, 0.45);
+
+  /* ---- Radii ---- */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-pill: 9999px;
+
+  /* ---- Motion ---- */
+  --ease-mystic: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-whisper: 400ms;
+  --dur-drift: 900ms;
+  --dur-spell: 1600ms;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-surface: var(--surface);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-void: var(--void);
+  --color-void-2: var(--void-2);
+  --color-void-3: var(--void-3);
+  --color-ink: var(--ink);
+  --color-aura: var(--aura);
+  --color-aura-bright: var(--aura-bright);
+  --color-aura-deep: var(--aura-deep);
+  --color-fg-star: var(--fg-star);
+  --color-fg-moon: var(--fg-moon);
+  --color-fg-dust: var(--fg-dust);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+html,
+body {
+  background: var(--void-2);
+  color: var(--fg-star);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Carousel particle float */
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-12px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Focus visibility for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--aura-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--aura-deep);
+  color: var(--fg-star);
 }
