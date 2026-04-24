@@ -1,0 +1,51 @@
+import { DocumentMeta } from "@/lib/types";
+
+export const DOCUMENTS: DocumentMeta[] = [
+  {
+    id: "resume",
+    title: "Resume",
+    category: "resume",
+    description: "Current resume with experience, education, skills, and projects",
+    filename: "resume.md",
+    pdfPath: "/documents/resume.pdf",
+    tags: ["experience", "skills", "education", "work", "projects", "leadership"],
+    lastUpdated: "2026-04-01",
+  },
+  {
+    id: "transcript",
+    title: "Unofficial Transcript",
+    category: "transcript",
+    description: "University of Michigan unofficial transcript with coursework and grades",
+    filename: "transcript.md",
+    pdfPath: "/documents/transcript.pdf",
+    tags: ["courses", "grades", "GPA", "education", "university of michigan"],
+    lastUpdated: "2026-04-01",
+  },
+  {
+    id: "google-cert",
+    title: "Google IT Automation with Python Certificate",
+    category: "certification",
+    description: "Google professional certificate completed through Michigan Online",
+    filename: "google-cert.md",
+    tags: ["google", "python", "automation", "certificate", "IT", "michigan online"],
+    lastUpdated: "2026-04-01",
+  },
+  {
+    id: "project-aspera",
+    title: "Aspera — AI Life Optimizer",
+    category: "project",
+    description: "React Native/Expo app using Claude AI for lifestyle optimization and self-coaching",
+    filename: "project-aspera.md",
+    tags: ["AI", "machine learning", "React Native", "mobile", "Claude", "hackathon", "leadership"],
+    lastUpdated: "2026-04-01",
+  },
+  {
+    id: "essay-anthropic",
+    title: "Anthropic Application Essay",
+    category: "essay",
+    description: "Application materials and personal statement for Anthropic",
+    filename: "essay-anthropic.md",
+    tags: ["AI safety", "Anthropic", "motivation", "goals", "career"],
+    lastUpdated: "2026-04-01",
+  },
+];
