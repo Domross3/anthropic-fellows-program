@@ -328,44 +328,6 @@ export default function Carousel({
         }}
       />
 
-      {/* Rune dots */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 14,
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          gap: 14,
-          zIndex: 5,
-        }}
-      >
-        {items.map((m, i) => {
-          const activeDot = Math.round(pos) % n === i;
-          return (
-            <button
-              key={m.id}
-              onClick={() => jumpTo(i)}
-              aria-label={`Show ${m.title}`}
-              style={{
-                width: activeDot ? 28 : 8,
-                height: 8,
-                borderRadius: 9999,
-                background: activeDot
-                  ? "linear-gradient(90deg, var(--aura), var(--aura-bright))"
-                  : "rgba(196, 181, 253, 0.25)",
-                border: 0,
-                padding: 0,
-                cursor: "pointer",
-                transition:
-                  "width 600ms var(--ease-mystic), background 400ms",
-                boxShadow: activeDot ? "0 0 12px var(--aura-soft)" : "none",
-              }}
-            />
-          );
-        })}
-      </div>
-
       {showScrubber && n > 1 && (
         <Scrubber
           pos={pos}
