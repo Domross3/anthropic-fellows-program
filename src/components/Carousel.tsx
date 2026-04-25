@@ -286,7 +286,10 @@ export default function Carousel({
         })}
       </div>
 
-      {/* Left/Right fog curtains — feathered top/bottom so they blend into cosmos */}
+      {/* Left/Right fog curtains — feathered top/bottom so they blend into cosmos.
+          No backdrop-filter: a constant blur with a fading dark gradient produces
+          a hard vertical seam where the blur stops. The dark gradient alone is
+          enough to dim the side mirrors. */}
       <div
         aria-hidden
         style={{
@@ -297,8 +300,6 @@ export default function Carousel({
           width: "20%",
           background:
             "linear-gradient(90deg, rgba(10,6,32,0.85) 0%, rgba(10,6,32,0.55) 45%, rgba(10,6,32,0) 100%)",
-          backdropFilter: "blur(5px)",
-          WebkitBackdropFilter: "blur(5px)",
           maskImage:
             "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
           WebkitMaskImage:
@@ -317,8 +318,6 @@ export default function Carousel({
           width: "20%",
           background:
             "linear-gradient(270deg, rgba(10,6,32,0.85) 0%, rgba(10,6,32,0.55) 45%, rgba(10,6,32,0) 100%)",
-          backdropFilter: "blur(5px)",
-          WebkitBackdropFilter: "blur(5px)",
           maskImage:
             "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
           WebkitMaskImage:
