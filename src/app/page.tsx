@@ -55,76 +55,38 @@ export default function Home() {
           style={{
             maxWidth: 1280,
             margin: "0 auto",
-            padding: "60px 32px 80px 32px",
+            padding: "16px 32px 40px 32px",
           }}
         >
           {/* Hero */}
           <section
             style={{
               textAlign: "center",
-              marginBottom: 56,
-              paddingTop: 40,
+              marginBottom: 18,
+              paddingTop: 4,
             }}
           >
-            <div
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.4em",
-                textTransform: "uppercase",
-                color: "var(--aura-bright)",
-                fontWeight: 500,
-                marginBottom: 20,
-              }}
-            >
-              ✦ Anthropic Fellows Program ✦
-            </div>
             <h1
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(40px, 6vw, 64px)",
+                fontSize: "clamp(28px, 4vw, 44px)",
                 fontWeight: 500,
-                lineHeight: 1.02,
+                lineHeight: 1.05,
                 letterSpacing: "-0.005em",
                 color: "var(--fg-star)",
                 margin: 0,
-                textShadow: "0 0 40px rgba(167, 139, 250, 0.3)",
+                textShadow: "0 0 36px rgba(167, 139, 250, 0.3)",
               }}
             >
-              An application in motion
+              Anthropic Fellows Program Application
             </h1>
-            <p
-              style={{
-                fontFamily: "var(--font-display)",
-                fontStyle: "italic",
-                fontSize: 20,
-                lineHeight: 1.5,
-                color: "var(--fg-moon)",
-                maxWidth: 620,
-                margin: "22px auto 0 auto",
-                fontWeight: 400,
-              }}
-            >
-              Coursework, projects, and the writing behind them —
-              searchable by the same kind of model they'd help align.
-            </p>
-            <div
-              style={{
-                marginTop: 26,
-                color: "var(--aura)",
-                letterSpacing: "0.6em",
-                fontSize: 14,
-                opacity: 0.6,
-              }}
-            >
-              ✦ ✦ ✦
-            </div>
           </section>
 
           {/* Search */}
           <section
             style={{
               maxWidth: 760,
-              margin: "0 auto 56px auto",
+              margin: "0 auto 24px auto",
             }}
           >
             <SearchBar onSearch={handleSearch} isLoading={isLoading} />
@@ -184,24 +146,6 @@ export default function Home() {
 
           {/* Carousel */}
           <section>
-            <div
-              style={{
-                textAlign: "center",
-                marginBottom: 20,
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 10,
-                  letterSpacing: "0.32em",
-                  textTransform: "uppercase",
-                  color: "var(--fg-dust)",
-                  fontWeight: 500,
-                }}
-              >
-                ✦ Featured Work
-              </div>
-            </div>
             <Carousel items={featured} onOpen={setOpenItem} />
           </section>
 

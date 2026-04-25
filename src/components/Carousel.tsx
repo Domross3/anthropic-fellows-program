@@ -231,7 +231,7 @@ export default function Carousel({
       style={{
         position: "relative",
         width: "100%",
-        height: 640,
+        height: 520,
         perspective: 1400,
         perspectiveOrigin: "50% 50%",
         outline: "none",
@@ -265,8 +265,8 @@ export default function Carousel({
               }}
               style={{
                 position: "absolute",
-                width: 360,
-                height: 480,
+                width: 320,
+                height: 400,
                 transform: `translate3d(${t.x}px, 0, ${t.z}px) rotateY(${t.rotY}deg) scale(${t.scale})`,
                 opacity: t.opacity,
                 filter: `blur(${t.blur}px)`,
@@ -366,7 +366,7 @@ function OvalCard({ item, active }: { item: DocumentMeta; active: boolean }) {
         position: "relative",
         width: "100%",
         height: "100%",
-        borderRadius: 170,
+        borderRadius: 160,
         background:
           "linear-gradient(180deg, rgba(36,23,87,0.55) 0%, rgba(18,10,53,0.85) 100%)",
         border: "1px solid rgba(196, 181, 253, 0.28)",
@@ -391,7 +391,7 @@ function OvalCard({ item, active }: { item: DocumentMeta; active: boolean }) {
             src={item.imagePath}
             alt=""
             fill
-            sizes="360px"
+            sizes="320px"
             style={{
               objectFit: "cover",
               filter: "saturate(0.82) contrast(1.05) brightness(0.72)",
