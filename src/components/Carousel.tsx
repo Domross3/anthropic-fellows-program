@@ -127,7 +127,9 @@ export default function Carousel({
     function onWheel(e: WheelEvent) {
       const ax = Math.abs(e.deltaX);
       const ay = Math.abs(e.deltaY);
-      const horizontalIntent = ax > ay * 1.2 || e.shiftKey;
+      // Only hijack on strong horizontal dominance or explicit shift+wheel.
+      // Vertical scroll always passes through to the page.
+      const horizontalIntent = (ax > ay * 2 && ax > 8) || e.shiftKey;
       if (!horizontalIntent) return;
       const delta = e.shiftKey ? e.deltaY : e.deltaX;
       if (Math.abs(delta) < 1) return;
