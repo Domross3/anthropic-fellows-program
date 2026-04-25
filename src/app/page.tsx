@@ -164,7 +164,7 @@ export default function Home() {
             fontFamily: "var(--font-body)",
           }}
         >
-          ✦ Dominic Ross · University of Michigan · EECS ✦
+          ✦ Dom Ross · University of Michigan ✦
         </footer>
       </div>
 
