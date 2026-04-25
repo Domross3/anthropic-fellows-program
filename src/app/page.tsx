@@ -55,15 +55,15 @@ export default function Home() {
           style={{
             maxWidth: 1280,
             margin: "0 auto",
-            padding: "16px 32px 40px 32px",
+            padding: "6px 32px 40px 32px",
           }}
         >
           {/* Hero */}
           <section
             style={{
               textAlign: "center",
-              marginBottom: 18,
-              paddingTop: 4,
+              marginBottom: 10,
+              paddingTop: 0,
             }}
           >
             <h1
@@ -86,7 +86,7 @@ export default function Home() {
           <section
             style={{
               maxWidth: 880,
-              margin: "0 auto 24px auto",
+              margin: "0 auto 14px auto",
             }}
           >
             <SearchBar onSearch={handleSearch} isLoading={isLoading} />

@@ -4,7 +4,7 @@ export default function Header() {
       style={{
         position: "relative",
         zIndex: 10,
-        padding: "28px 32px 0 32px",
+        padding: "18px 32px 0 32px",
       }}
     >
       <div
@@ -17,34 +17,20 @@ export default function Header() {
           gap: 16,
         }}
       >
-        <div>
-          <div
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: 22,
-              fontWeight: 500,
-              letterSpacing: "0.01em",
-              color: "var(--fg-star)",
-              lineHeight: 1,
-            }}
-          >
-            Dom Ross
-          </div>
-          <div
-            style={{
-              marginTop: 4,
-              fontSize: 10,
-              letterSpacing: "0.32em",
-              textTransform: "uppercase",
-              color: "var(--fg-dust)",
-              fontWeight: 400,
-            }}
-          >
-            ✦ EECS · Michigan ✦
-          </div>
+        <div
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 22,
+            fontWeight: 500,
+            letterSpacing: "0.01em",
+            color: "var(--fg-star)",
+            lineHeight: 1,
+          }}
+        >
+          Dom Ross
         </div>
         <a
-          href="mailto:domross@umich.edu"
+          href="mailto:michros@umich.edu"
           style={{
             padding: "9px 20px",
             borderRadius: 9999,
