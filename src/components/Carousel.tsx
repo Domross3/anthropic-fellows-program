@@ -538,8 +538,6 @@ function OvalCard({ item, active }: { item: DocumentMeta; active: boolean }) {
           ? `0 0 0 1px rgba(196,181,253,0.35), 0 0 60px 4px ${aura}55, 0 30px 80px rgba(0,0,0,0.6)`
           : "0 0 30px rgba(167,139,250,0.2), 0 20px 50px rgba(0,0,0,0.5)",
         overflow: "hidden",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
       }}
     >
       <div
