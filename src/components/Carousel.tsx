@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { DocumentMeta, AuraColor } from "@/lib/types";
 
@@ -22,6 +22,7 @@ interface CarouselProps {
   autoAdvance?: boolean;
   pauseMs?: number;
   transitionMs?: number;
+  showScrubber?: boolean;
 }
 
 export default function Carousel({
@@ -30,10 +31,12 @@ export default function Carousel({
   autoAdvance = true,
   pauseMs = 2800,
   transitionMs = 1100,
+  showScrubber = true,
 }: CarouselProps) {
   const n = items.length;
   const [pos, setPos] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [scrubbing, setScrubbing] = useState(false);
   const targetRef = useRef(0);
   const animRef = useRef(0);
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -41,7 +44,7 @@ export default function Carousel({
   const wheelCooldown = useRef(0);
 
   useEffect(() => {
-    if (paused || !autoAdvance || n <= 1) return;
+    if (paused || scrubbing || !autoAdvance || n <= 1) return;
     let cancelled = false;
     let pauseTimer: ReturnType<typeof setTimeout>;
     let rafId = 0;
@@ -76,7 +79,7 @@ export default function Carousel({
       clearTimeout(pauseTimer);
       cancelAnimationFrame(rafId);
     };
-  }, [paused, autoAdvance, pauseMs, transitionMs, n]);
+  }, [paused, scrubbing, autoAdvance, pauseMs, transitionMs, n]);
 
   function jumpTo(i: number) {
     cancelAnimationFrame(animRef.current);
@@ -353,6 +356,198 @@ export default function Carousel({
             />
           );
         })}
+      </div>
+
+      {showScrubber && n > 1 && (
+        <Scrubber
+          pos={pos}
+          n={n}
+          items={items}
+          onScrubStart={() => {
+            cancelAnimationFrame(animRef.current);
+            setScrubbing(true);
+          }}
+          onScrub={(p) => setPos(p)}
+          onScrubEnd={(landed) => {
+            targetRef.current = landed;
+            setPos(landed);
+            setScrubbing(false);
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function Scrubber({
+  pos,
+  n,
+  items,
+  onScrubStart,
+  onScrub,
+  onScrubEnd,
+}: {
+  pos: number;
+  n: number;
+  items: DocumentMeta[];
+  onScrubStart: () => void;
+  onScrub: (p: number) => void;
+  onScrubEnd: (landed: number) => void;
+}) {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [dragging, setDragging] = useState(false);
+
+  const progress = n > 1 ? pos / (n - 1) : 0;
+  const pct = Math.max(0, Math.min(1, progress)) * 100;
+
+  function posFromClientX(clientX: number) {
+    const rect = trackRef.current?.getBoundingClientRect();
+    if (!rect) return 0;
+    const x = clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, x / rect.width));
+    return ratio * (n - 1);
+  }
+
+  function onDown(e: React.PointerEvent) {
+    e.preventDefault();
+    setDragging(true);
+    onScrubStart();
+    const p = posFromClientX(e.clientX);
+    onScrub(p);
+
+    function onMove(ev: PointerEvent) {
+      onScrub(posFromClientX(ev.clientX));
+    }
+    function onUp(ev: PointerEvent) {
+      const p2 = posFromClientX(ev.clientX);
+      const landed = Math.max(0, Math.min(n - 1, Math.round(p2)));
+      onScrubEnd(landed);
+      setDragging(false);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    }
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  }
+
+  const currentLabel = items[Math.round(pos) % n]?.title ?? "";
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: "50%",
+        bottom: -78,
+        transform: "translateX(-50%)",
+        width: "min(420px, 60%)",
+        zIndex: 6,
+        userSelect: "none",
+      }}
+    >
+      <div
+        style={{
+          textAlign: "center",
+          fontFamily: "var(--font-display)",
+          fontSize: 15,
+          fontStyle: "italic",
+          color: "var(--fg-moon)",
+          letterSpacing: "0.02em",
+          marginBottom: 10,
+          transition: "color 200ms",
+          textShadow: "0 0 12px rgba(167,139,250,0.35)",
+          minHeight: 22,
+        }}
+      >
+        {currentLabel}
+      </div>
+
+      <div
+        ref={trackRef}
+        onPointerDown={onDown}
+        style={{
+          position: "relative",
+          height: 40,
+          display: "flex",
+          alignItems: "center",
+          cursor: dragging ? "grabbing" : "grab",
+          touchAction: "none",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: "50%",
+            height: 2,
+            transform: "translateY(-50%)",
+            background:
+              "linear-gradient(90deg, rgba(196,181,253,0.08), rgba(196,181,253,0.35), rgba(196,181,253,0.08))",
+            borderRadius: 9999,
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: "50%",
+            height: 2,
+            width: `${pct}%`,
+            transform: "translateY(-50%)",
+            background:
+              "linear-gradient(90deg, var(--aura-deep), var(--aura), var(--aura-bright))",
+            borderRadius: 9999,
+            boxShadow: "0 0 12px rgba(167,139,250,0.6)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {items.map((it, i) => {
+          const tPct = (i / (n - 1)) * 100;
+          const reached = i <= pos + 0.001;
+          return (
+            <div
+              key={it.id}
+              style={{
+                position: "absolute",
+                left: `${tPct}%`,
+                top: "50%",
+                width: 6,
+                height: 6,
+                transform: "translate(-50%, -50%)",
+                borderRadius: 9999,
+                background: reached
+                  ? "var(--aura-bright)"
+                  : "rgba(196,181,253,0.25)",
+                boxShadow: reached ? "0 0 10px var(--aura)" : "none",
+                transition: "background 200ms, box-shadow 200ms",
+                pointerEvents: "none",
+              }}
+            />
+          );
+        })}
+
+        <div
+          style={{
+            position: "absolute",
+            left: `${pct}%`,
+            top: "50%",
+            transform: `translate(-50%, -50%) scale(${dragging ? 1.18 : 1})`,
+            width: 22,
+            height: 22,
+            borderRadius: 9999,
+            background:
+              "radial-gradient(circle at 30% 30%, #ffffff 0%, var(--aura-bright) 40%, var(--aura-deep) 100%)",
+            border: "1px solid rgba(255,255,255,0.55)",
+            boxShadow: dragging
+              ? "0 0 0 6px rgba(167,139,250,0.22), 0 0 28px rgba(167,139,250,0.75)"
+              : "0 0 0 3px rgba(167,139,250,0.18), 0 0 18px rgba(167,139,250,0.55)",
+            transition:
+              "box-shadow 200ms, transform 160ms cubic-bezier(0.16,1,0.3,1)",
+            pointerEvents: "none",
+          }}
+        />
       </div>
     </div>
   );

@@ -145,7 +145,7 @@ export default function Home() {
           </section>
 
           {/* Carousel */}
-          <section>
+          <section style={{ paddingBottom: 100 }}>
             <Carousel items={featured} onOpen={setOpenItem} />
           </section>
 
