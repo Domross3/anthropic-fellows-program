@@ -85,7 +85,7 @@ export default function Home() {
           {/* Search */}
           <section
             style={{
-              maxWidth: 760,
+              maxWidth: 880,
               margin: "0 auto 24px auto",
             }}
           >

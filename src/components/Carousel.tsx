@@ -234,7 +234,7 @@ export default function Carousel({
       style={{
         position: "relative",
         width: "100%",
-        height: 520,
+        height: 560,
         perspective: 1400,
         perspectiveOrigin: "50% 50%",
         outline: "none",
@@ -268,8 +268,8 @@ export default function Carousel({
               }}
               style={{
                 position: "absolute",
-                width: 320,
-                height: 400,
+                width: 340,
+                height: 500,
                 transform: `translate3d(${t.x}px, 0, ${t.z}px) rotateY(${t.rotY}deg) scale(${t.scale})`,
                 opacity: t.opacity,
                 filter: `blur(${t.blur}px)`,
@@ -286,7 +286,7 @@ export default function Carousel({
         })}
       </div>
 
-      {/* Left/Right fog curtains */}
+      {/* Left/Right fog curtains — feathered top/bottom so they blend into cosmos */}
       <div
         aria-hidden
         style={{
@@ -294,11 +294,15 @@ export default function Carousel({
           top: 0,
           bottom: 0,
           left: 0,
-          width: "22%",
+          width: "20%",
           background:
-            "linear-gradient(90deg, rgba(10,6,32,0.95) 0%, rgba(10,6,32,0.7) 40%, rgba(10,6,32,0) 100%)",
-          backdropFilter: "blur(6px)",
-          WebkitBackdropFilter: "blur(6px)",
+            "linear-gradient(90deg, rgba(10,6,32,0.85) 0%, rgba(10,6,32,0.55) 45%, rgba(10,6,32,0) 100%)",
+          backdropFilter: "blur(5px)",
+          WebkitBackdropFilter: "blur(5px)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
           pointerEvents: "none",
           zIndex: 4,
         }}
@@ -310,11 +314,15 @@ export default function Carousel({
           top: 0,
           bottom: 0,
           right: 0,
-          width: "22%",
+          width: "20%",
           background:
-            "linear-gradient(270deg, rgba(10,6,32,0.95) 0%, rgba(10,6,32,0.7) 40%, rgba(10,6,32,0) 100%)",
-          backdropFilter: "blur(6px)",
-          WebkitBackdropFilter: "blur(6px)",
+            "linear-gradient(270deg, rgba(10,6,32,0.85) 0%, rgba(10,6,32,0.55) 45%, rgba(10,6,32,0) 100%)",
+          backdropFilter: "blur(5px)",
+          WebkitBackdropFilter: "blur(5px)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
           pointerEvents: "none",
           zIndex: 4,
         }}
@@ -561,7 +569,7 @@ function OvalCard({ item, active }: { item: DocumentMeta; active: boolean }) {
         position: "relative",
         width: "100%",
         height: "100%",
-        borderRadius: 160,
+        borderRadius: 170,
         background:
           "linear-gradient(180deg, rgba(36,23,87,0.55) 0%, rgba(18,10,53,0.85) 100%)",
         border: "1px solid rgba(196, 181, 253, 0.28)",
@@ -586,7 +594,7 @@ function OvalCard({ item, active }: { item: DocumentMeta; active: boolean }) {
             src={item.imagePath}
             alt=""
             fill
-            sizes="320px"
+            sizes="340px"
             style={{
               objectFit: "cover",
               filter: "saturate(0.82) contrast(1.05) brightness(0.72)",

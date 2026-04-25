@@ -108,11 +108,12 @@ export default function SearchBar({ onSearch, isLoading }: SearchBarProps) {
 
       <div
         style={{
-          marginTop: 18,
+          marginTop: 16,
           display: "flex",
-          flexWrap: "wrap",
-          gap: 8,
+          flexWrap: "nowrap",
+          gap: 6,
           justifyContent: "center",
+          overflow: "hidden",
         }}
       >
         {SUGGESTED_QUERIES.map((suggestion) => (
@@ -121,17 +122,19 @@ export default function SearchBar({ onSearch, isLoading }: SearchBarProps) {
             onClick={() => handleSuggestion(suggestion)}
             disabled={isLoading}
             style={{
-              padding: "7px 14px",
+              padding: "6px 12px",
               borderRadius: 9999,
               border: "1px solid rgba(196, 181, 253, 0.2)",
               background: "rgba(167, 139, 250, 0.06)",
               color: "var(--fg-moon)",
-              fontSize: 12,
-              letterSpacing: "0.03em",
+              fontSize: 11.5,
+              letterSpacing: "0.02em",
               cursor: isLoading ? "not-allowed" : "pointer",
               opacity: isLoading ? 0.5 : 1,
               fontFamily: "var(--font-body)",
               transition: "all 220ms var(--ease-mystic)",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
             }}
             onMouseEnter={(e) => {
               if (isLoading) return;
