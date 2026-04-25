@@ -65,7 +65,7 @@ export default function SearchBar({ onSearch, isLoading }: SearchBarProps) {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Ask the portal…"
+          placeholder="Ask your questions here…"
           disabled={isLoading}
           style={{
             flex: 1,
