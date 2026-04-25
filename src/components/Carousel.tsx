@@ -286,42 +286,21 @@ export default function Carousel({
         })}
       </div>
 
-      {/* Left/Right fog curtains — feathered top/bottom so they blend into cosmos.
-          No backdrop-filter: a constant blur with a fading dark gradient produces
-          a hard vertical seam where the blur stops. The dark gradient alone is
-          enough to dim the side mirrors. */}
+      {/* Side vignettes fade from off-canvas so they never terminate at a hard
+          vertical edge against the cosmos background. */}
       <div
         aria-hidden
         style={{
           position: "absolute",
-          top: 0,
-          bottom: 0,
-          left: 0,
-          width: "20%",
-          background:
-            "linear-gradient(90deg, rgba(10,6,32,0.85) 0%, rgba(10,6,32,0.55) 45%, rgba(10,6,32,0) 100%)",
+          inset: 0,
+          background: [
+            "radial-gradient(58% 92% at -10% 50%, rgba(18,10,53,0.9) 0%, rgba(18,10,53,0.72) 26%, rgba(10,6,32,0.38) 50%, rgba(10,6,32,0.1) 64%, rgba(10,6,32,0) 76%)",
+            "radial-gradient(58% 92% at 110% 50%, rgba(18,10,53,0.9) 0%, rgba(18,10,53,0.72) 26%, rgba(10,6,32,0.38) 50%, rgba(10,6,32,0.1) 64%, rgba(10,6,32,0) 76%)",
+          ].join(", "),
           maskImage:
-            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
+            "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
-          pointerEvents: "none",
-          zIndex: 4,
-        }}
-      />
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          right: 0,
-          width: "20%",
-          background:
-            "linear-gradient(270deg, rgba(10,6,32,0.85) 0%, rgba(10,6,32,0.55) 45%, rgba(10,6,32,0) 100%)",
-          maskImage:
-            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)",
+            "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
           pointerEvents: "none",
           zIndex: 4,
         }}
