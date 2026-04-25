@@ -286,26 +286,6 @@ export default function Carousel({
         })}
       </div>
 
-      {/* Side vignettes fade from off-canvas so they never terminate at a hard
-          vertical edge against the cosmos background. */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: [
-            "radial-gradient(58% 92% at -10% 50%, rgba(18,10,53,0.9) 0%, rgba(18,10,53,0.72) 26%, rgba(10,6,32,0.38) 50%, rgba(10,6,32,0.1) 64%, rgba(10,6,32,0) 76%)",
-            "radial-gradient(58% 92% at 110% 50%, rgba(18,10,53,0.9) 0%, rgba(18,10,53,0.72) 26%, rgba(10,6,32,0.38) 50%, rgba(10,6,32,0.1) 64%, rgba(10,6,32,0) 76%)",
-          ].join(", "),
-          maskImage:
-            "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
-          pointerEvents: "none",
-          zIndex: 4,
-        }}
-      />
-
       {showScrubber && n > 1 && (
         <Scrubber
           pos={pos}
