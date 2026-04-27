@@ -1,5 +1,5 @@
 import EntryCard from "@/components/EntryCard";
-import { PROJECTS } from "@/data/projects";
+import { projects } from "@/data/projects";
 
 export const metadata = {
   title: "Projects — Dominic Ross",
@@ -41,7 +41,7 @@ export default function ProjectsPage() {
           gap: 18,
         }}
       >
-        {PROJECTS.map((entry) => (
+        {projects.map((entry) => (
           <EntryCard key={entry.id} entry={entry} />
         ))}
       </div>

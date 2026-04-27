@@ -97,13 +97,14 @@ export interface ApplicationQuestion {
 
 /**
  * One research entry. Used to render the /research list.
- * Shape is intentionally identical to ProjectEntry — a single EntryCard
- * component renders both.
+ * Differs from ProjectEntry only in that `affiliation` is required here
+ * (research is always done somewhere) but optional for projects.
  */
 export interface ResearchEntry {
   id: string;
   title: string;
   role: string;
+  affiliation: string;
   dates: string;
   summary: string;
   links?: LinkRef[];
@@ -111,9 +112,19 @@ export interface ResearchEntry {
 }
 
 /**
- * One project entry. Same shape as ResearchEntry on purpose.
+ * One project entry. Same fields as ResearchEntry, with affiliation
+ * optional (a personal/solo project may have none).
  */
-export type ProjectEntry = ResearchEntry;
+export interface ProjectEntry {
+  id: string;
+  title: string;
+  role: string;
+  affiliation?: string;
+  dates: string;
+  summary: string;
+  links?: LinkRef[];
+  tags?: string[];
+}
 
 /**
  * Content for the /about tab.

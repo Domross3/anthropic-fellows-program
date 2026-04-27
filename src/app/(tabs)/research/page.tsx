@@ -1,5 +1,5 @@
 import EntryCard from "@/components/EntryCard";
-import { RESEARCH } from "@/data/research";
+import { research } from "@/data/research";
 
 export const metadata = {
   title: "Research — Dominic Ross",
@@ -41,7 +41,7 @@ export default function ResearchPage() {
           gap: 18,
         }}
       >
-        {RESEARCH.map((entry) => (
+        {research.map((entry) => (
           <EntryCard key={entry.id} entry={entry} />
         ))}
       </div>

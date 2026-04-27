@@ -1,10 +1,12 @@
-import { ResearchEntry } from "@/lib/types";
+import { ProjectEntry } from "@/lib/types";
 
 /**
- * Render a single Research or Project entry. ProjectEntry is a type alias
- * for ResearchEntry, so the same card renders both.
+ * Render a single Research or Project entry. The card accepts the looser
+ * shape (ProjectEntry — optional affiliation) so both ResearchEntry
+ * (affiliation required) and ProjectEntry (affiliation optional) are
+ * structurally compatible.
  */
-export default function EntryCard({ entry }: { entry: ResearchEntry }) {
+export default function EntryCard({ entry }: { entry: ProjectEntry }) {
   return (
     <article
       style={{
@@ -30,6 +32,7 @@ export default function EntryCard({ entry }: { entry: ResearchEntry }) {
       >
         {entry.title}
       </h2>
+
       <div
         style={{
           marginTop: 6,
@@ -40,6 +43,22 @@ export default function EntryCard({ entry }: { entry: ResearchEntry }) {
       >
         {entry.role} · {entry.dates}
       </div>
+
+      {entry.affiliation && (
+        <div
+          style={{
+            marginTop: 4,
+            fontSize: 12.5,
+            lineHeight: 1.45,
+            fontStyle: "italic",
+            color: "var(--fg-dust)",
+            fontFamily: "var(--font-display)",
+          }}
+        >
+          {entry.affiliation}
+        </div>
+      )}
+
       <p
         style={{
           marginTop: 14,
