@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { DocumentMeta, AuraColor } from "@/lib/types";
+import { CarouselItem, AuraColor } from "@/lib/types";
 
 const AURA_VAR: Record<AuraColor, string> = {
   resume: "var(--aura-resume)",
@@ -17,8 +17,8 @@ function easeInOutCubic(t: number) {
 }
 
 interface CarouselProps {
-  items: DocumentMeta[];
-  onOpen: (item: DocumentMeta) => void;
+  items: CarouselItem[];
+  onOpen: (item: CarouselItem) => void;
   autoAdvance?: boolean;
   pauseMs?: number;
   transitionMs?: number;
@@ -317,7 +317,7 @@ function Scrubber({
 }: {
   pos: number;
   n: number;
-  items: DocumentMeta[];
+  items: CarouselItem[];
   onScrubStart: () => void;
   onScrub: (p: number) => void;
   onScrubEnd: (landed: number) => void;
@@ -481,7 +481,7 @@ function Scrubber({
   );
 }
 
-function OvalCard({ item, active }: { item: DocumentMeta; active: boolean }) {
+function OvalCard({ item, active }: { item: CarouselItem; active: boolean }) {
   const aura = AURA_VAR[item.aura];
   return (
     <div

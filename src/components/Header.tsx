@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header
@@ -17,7 +19,8 @@ export default function Header() {
           gap: 16,
         }}
       >
-        <div
+        <Link
+          href="/"
           style={{
             fontFamily: "var(--font-display)",
             fontSize: 22,
@@ -25,10 +28,11 @@ export default function Header() {
             letterSpacing: "0.01em",
             color: "var(--fg-star)",
             lineHeight: 1,
+            textDecoration: "none",
           }}
         >
           Dom Ross
-        </div>
+        </Link>
         <a
           href="mailto:michros@umich.edu"
           style={{
