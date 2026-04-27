@@ -82,13 +82,17 @@ export interface TabMirror extends CarouselItem {
 }
 
 /**
- * A single section of the application essay (e.g., "Personal Statement").
- * Body is markdown-friendly text; rendered as a paragraph in /application.
+ * One application essay response. Questions are grouped by `section`
+ * (e.g., "Motivation & Fit") at render time. `prompt` is the meta-hint
+ * shown beside the question (e.g., "1-2 paragraphs", "Brief explanation
+ * with % estimate") and is rendered smaller than the question itself.
  */
-export interface ApplicationSection {
+export interface ApplicationQuestion {
   id: string;
-  heading: string;
-  body: string;
+  section: string;
+  question: string;
+  prompt?: string;
+  answer: string;
 }
 
 /**
