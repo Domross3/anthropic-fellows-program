@@ -96,6 +96,17 @@ export interface ApplicationQuestion {
 }
 
 /**
+ * An image attached to a Research or Project entry. `src` is a path under
+ * /public (e.g. "/photos/fitzpatrick.png"). `caption` is rendered in
+ * small italic Cormorant beneath the image.
+ */
+export interface EntryImage {
+  src: string;
+  caption: string;
+  alt?: string;
+}
+
+/**
  * One research entry. Used to render the /research list.
  * Differs from ProjectEntry only in that `affiliation` is required here
  * (research is always done somewhere) but optional for projects.
@@ -109,6 +120,7 @@ export interface ResearchEntry {
   summary: string;
   links?: LinkRef[];
   tags?: string[];
+  images?: EntryImage[];
 }
 
 /**
@@ -124,6 +136,7 @@ export interface ProjectEntry {
   summary: string;
   links?: LinkRef[];
   tags?: string[];
+  images?: EntryImage[];
 }
 
 /**

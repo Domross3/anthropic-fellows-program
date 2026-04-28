@@ -11,6 +11,12 @@ export const research: ResearchEntry[] = [
     affiliation: "PSYCH 303: Research Methods, University of Michigan",
     dates: "Fall 2025",
     summary: `Designed and ran a between-groups experimental study (N=29) testing whether moral framing of human reproduction as environmentally harmful would increase acceptance of AI romantic partners. Participants in the moral-threat condition read an article on environmental consequences of having children; the control condition read a neutral article. Acceptance was measured across four Likert items, analyzed with independent-samples t-tests. The manipulation didn't move attitudes — baseline resistance to AI partners was uniformly high — but the project was hands-on practice in hypothesis-driven design on AI-human dynamics and in reporting null results honestly. The closest thing in my background to the empirical work the Societal Impacts team does.`,
+    links: [
+      {
+        label: "Study writeup",
+        url: "https://docs.google.com/document/d/1iMs753M8YjLSeo7f6prcaIjQLvPgKnH3xrpKnXLi7P4/edit?usp=sharing",
+      },
+    ],
     tags: ["Empirical Study", "AI-Human Interaction", "Cognitive Science"],
   },
   {
@@ -21,6 +27,14 @@ export const research: ResearchEntry[] = [
       "University of Michigan UROP — co-authored with Dan Fitzpatrick (Research and Assessment Specialist)",
     dates: "2022–2023",
     summary: `Co-authored a Campbell-style meta-analysis on whether single-track year-round education (YRE) — same instructional days as traditional calendars but with shorter, more frequent breaks — improves K-12 academic outcomes in U.S. schools. Screened 319 records through PRISMA-style identification, screening, and eligibility stages, ultimately synthesizing 5 studies (2017–2022) in the quantitative analysis. Effect sizes were positive but statistically insignificant for the recent window (Cohen's d = +.44 math, +.67 reading), reinforcing prior findings that YRE has positive but modest effects on student achievement. Concluded that policy makers should regard YRE as a useful but limited instrument for academic outcomes.`,
+    images: [
+      {
+        src: "/photos/fitzpatrick.png",
+        caption:
+          "Presenting the YRE meta-analysis at the UROP Annual Research Symposium.",
+        alt: "Dom Ross standing beside the YRE meta-analysis poster at the 2023 UROP Symposium",
+      },
+    ],
     tags: ["Meta-Analysis", "Education Policy", "Statistical Synthesis"],
   },
   {
@@ -51,6 +65,14 @@ export const research: ResearchEntry[] = [
       "Michigan Math and Computational Sciences (MaCSS) Scholars Program — supervised by Nina White",
     dates: "2022", // confirm dates
     summary: `Built a Markov-matrix-based statistical language generator from scratch, trained on Beatles lyrics and Steinbeck text. Implementation covered the conceptual foundations of modern language modeling — token transition probabilities, sampling strategies, training data effects on output style — without using any prebuilt NLP libraries. Predates current LLM work but on the same conceptual lineage; the project was my first exposure to thinking about what language models actually learn from data and how training corpus choice shapes generation.`,
+    images: [
+      {
+        src: "/photos/ngram.jpg",
+        caption:
+          "Presenting at the S-STEM Scholars conference in Washington D.C. with a live demo.",
+        alt: "Dom Ross presenting the N-Gram language model at the S-STEM Scholars conference",
+      },
+    ],
     tags: ["NLP", "Statistical Modeling", "From Scratch"],
   },
 ];

@@ -30,7 +30,7 @@ export default function ProjectsPage() {
           fontFamily: "var(--font-body)",
         }}
       >
-        Things I've shipped.
+        Things I'm working on.
       </p>
 
       <div

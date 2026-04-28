@@ -9,6 +9,7 @@ export const TABS: TabMirror[] = [
     id: "application",
     title: "Application",
     description: "The essays for the Anthropic Fellows Program.",
+    imagePath: "/photos/application.png",
     aura: "essay",
     route: "/application",
   },
@@ -24,7 +25,7 @@ export const TABS: TabMirror[] = [
   {
     id: "projects",
     title: "Projects",
-    description: "Things I've shipped.",
+    description: "Things I'm working on.",
     imagePath: "/photos/aspera.jpg",
     aura: "project",
     route: "/projects",

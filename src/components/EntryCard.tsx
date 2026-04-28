@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ProjectEntry } from "@/lib/types";
 
 /**
@@ -71,6 +72,57 @@ export default function EntryCard({ entry }: { entry: ProjectEntry }) {
       >
         {entry.summary}
       </p>
+
+      {entry.images && entry.images.length > 0 && (
+        <div
+          style={{
+            marginTop: 20,
+            display: "flex",
+            flexDirection: "column",
+            gap: 18,
+          }}
+        >
+          {entry.images.map((img) => (
+            <figure
+              key={img.src}
+              style={{ margin: 0 }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "4 / 3",
+                  borderRadius: 12,
+                  overflow: "hidden",
+                  border: "1px solid rgba(196, 181, 253, 0.18)",
+                  background: "rgba(10, 6, 32, 0.5)",
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt ?? img.caption}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <figcaption
+                style={{
+                  marginTop: 8,
+                  fontFamily: "var(--font-display)",
+                  fontStyle: "italic",
+                  fontSize: 13,
+                  lineHeight: 1.45,
+                  color: "var(--fg-dust)",
+                  textAlign: "center",
+                }}
+              >
+                {img.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
 
       {entry.tags && entry.tags.length > 0 && (
         <div
